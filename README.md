@@ -1,12 +1,16 @@
 # macos-dotfiles
-Just a bundle of dotfiles I like for macOS
+My current dotfiles for macOS
 
+## Install
+
+`./install.sh`
+
+## Using
+
+- oh-my-zsh
+- vim
 - skhd
 - yabai
 - neofetch
 - macchina
 - kitty
-
-## Install
-
-`./install.sh`
