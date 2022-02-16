@@ -11,6 +11,7 @@ My current dotfiles for macOS
 - vim
 - skhd
 - yabai
+- [stackline](https://github.com/AdamWagner/stackline)
 - neofetch
 - macchina
 - kitty
