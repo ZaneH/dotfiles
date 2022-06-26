@@ -7,12 +7,18 @@ alias kitty-theme="kitty +kitten themes"
 
 # Shorthand for editing configs
 alias vz="$EDITOR ~/.zshrc"
-alias vzl="$EDITOR ~/.local.zsh"
-alias vza="$EDITOR ~/.alias.zsh"
+alias vl="$EDITOR ~/.local.zsh"
+alias va="$EDITOR ~/.alias.zsh"
 alias vk="$EDITOR ~/.config/kitty/kitty.conf"
 alias vkl="$EDITOR ~/.config/kitty/local.conf"
 alias vs="$EDITOR ~/.config/skhd/skhdrc"
 alias vy="$EDITOR ~/.config/yabai/yabairc"
 
+# Git shorthand
+alias gcom="git checkout master"
+alias gpocb="git push origin $(git rev-parse --abbrev-ref HEAD)"
+alias gcob="git checkout -b"
+
 # Shorthand commands
 alias c="clear"
+alias sz="source ~/.zshrc"
