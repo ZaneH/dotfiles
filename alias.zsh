@@ -15,9 +15,12 @@ alias vs="$EDITOR ~/.config/skhd/skhdrc"
 alias vy="$EDITOR ~/.config/yabai/yabairc"
 
 # Git shorthand
-alias gcom="git checkout master"
-alias gpocb="git push origin $(git rev-parse --abbrev-ref HEAD)"
 alias gcob="git checkout -b"
+alias gcom="git checkout master"
+alias gfom="git fetch origin master"
+alias gpocb="git push origin $(git rev-parse --abbrev-ref HEAD)"
+alias gpom="git push origin master"
+alias grom="git rebase --interactive origin/master"
 
 # Shorthand commands
 alias c="clear"
