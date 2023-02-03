@@ -9,8 +9,8 @@ ln -s $(pwd)/local.zsh ~/.local.zsh
 ln -s $(pwd)/alias.zsh ~/.alias.zsh
 
 # Config dirs
-ln -s $(pwd)/neofetch ~/.config/neofetch
-ln -s $(pwd)/kitty ~/.config/kitty
-ln -s $(pwd)/yabai ~/.config/yabai
-ln -s $(pwd)/skhd ~/.config/skhd
-ln -s $(pwd)/macchina ~/.config/macchina
+ln -s $(pwd)/neofetch ~/.config
+ln -s $(pwd)/kitty ~/.config
+ln -s $(pwd)/yabai ~/.config
+ln -s $(pwd)/skhd ~/.config
+ln -s $(pwd)/macchina ~/.config
