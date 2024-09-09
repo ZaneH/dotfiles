@@ -1,2 +1,4 @@
-# Just env vars
-export EDITOR="/usr/bin/vim"
+export EDITOR="nvim"
+
+# Solana CLI
+export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"

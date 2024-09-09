@@ -1,7 +1,3 @@
-# Utilities
-alias flush-dns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder;"
-alias pkg-expand="pkgutil --expand"
-
 # Color scheme picker
 alias kitty-theme="kitty +kitten themes"
 
@@ -9,19 +5,18 @@ alias kitty-theme="kitty +kitten themes"
 alias vz="$EDITOR ~/.zshrc"
 alias vl="$EDITOR ~/.local.zsh"
 alias va="$EDITOR ~/.alias.zsh"
-alias vk="$EDITOR ~/.config/kitty/kitty.conf"
-alias vkl="$EDITOR ~/.config/kitty/local.conf"
-alias vs="$EDITOR ~/.config/skhd/skhdrc"
-alias vy="$EDITOR ~/.config/yabai/yabairc"
 
 # Git shorthand
 alias gcob="git checkout -b"
-alias gcom="git checkout master"
-alias gfom="git fetch origin master"
+alias gcom="git checkout main"
+alias gfom="git fetch origin main"
 alias gpocb="git push origin $(git rev-parse --abbrev-ref HEAD)"
-alias gpom="git push origin master"
-alias grom="git rebase --interactive origin/master"
+alias gpom="git push origin main"
+alias grom="git rebase --interactive origin/main"
 
 # Shorthand commands
-alias c="clear"
+alias k="clear"
 alias sz="source ~/.zshrc"
+
+# Clipboard
+alias pbcopy="xclip -selection clipboard"
