@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/home/me/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
     url = "https://github.com/kdheepak/lazygit.nvim"
   },
+  ["leap.nvim"] = {
+    loaded = true,
+    path = "/home/me/.local/share/nvim/site/pack/packer/start/leap.nvim",
+    url = "https://github.com/ggandor/leap.nvim"
+  },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "/home/me/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
@@ -108,6 +113,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/me/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-dap"] = {
+    loaded = true,
+    path = "/home/me/.local/share/nvim/site/pack/packer/start/nvim-dap",
+    url = "https://github.com/mfussenegger/nvim-dap"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -139,20 +149,15 @@ _G.packer_plugins = {
     path = "/home/me/.local/share/nvim/site/pack/packer/start/syntastic-local-solhint",
     url = "https://github.com/sohkai/syntastic-local-solhint"
   },
+  ["telescope-undo.nvim"] = {
+    loaded = true,
+    path = "/home/me/.local/share/nvim/site/pack/packer/start/telescope-undo.nvim",
+    url = "https://github.com/debugloop/telescope-undo.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/me/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
-  },
-  undotree = {
-    loaded = true,
-    path = "/home/me/.local/share/nvim/site/pack/packer/start/undotree",
-    url = "https://github.com/mbbill/undotree"
-  },
-  ["vim-fugitive"] = {
-    loaded = true,
-    path = "/home/me/.local/share/nvim/site/pack/packer/start/vim-fugitive",
-    url = "https://github.com/tpope/vim-fugitive"
   }
 }
 
