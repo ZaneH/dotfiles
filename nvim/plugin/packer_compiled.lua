@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/home/me/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["conform.nvim"] = {
+    loaded = true,
+    path = "/home/me/.local/share/nvim/site/pack/packer/start/conform.nvim",
+    url = "https://github.com/stevearc/conform.nvim"
+  },
   ["lazygit.nvim"] = {
     loaded = true,
     path = "/home/me/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
@@ -103,6 +108,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/me/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
+  },
+  ["mason-null-ls.nvim"] = {
+    loaded = true,
+    path = "/home/me/.local/share/nvim/site/pack/packer/start/mason-null-ls.nvim",
+    url = "https://github.com/jay-babu/mason-null-ls.nvim"
+  },
+  ["mason.nvim"] = {
+    loaded = true,
+    path = "/home/me/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
   },
   neotest = {
     loaded = true,
@@ -119,6 +134,11 @@ _G.packer_plugins = {
     path = "/home/me/.local/share/nvim/site/pack/packer/start/noice.nvim",
     url = "https://github.com/folke/noice.nvim"
   },
+  ["none-ls.nvim"] = {
+    loaded = true,
+    path = "/home/me/.local/share/nvim/site/pack/packer/start/none-ls.nvim",
+    url = "https://github.com/nvimtools/none-ls.nvim"
+  },
   ["nui.nvim"] = {
     loaded = true,
     path = "/home/me/.local/share/nvim/site/pack/packer/start/nui.nvim",
@@ -133,6 +153,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/me/.local/share/nvim/site/pack/packer/start/nvim-dap",
     url = "https://github.com/mfussenegger/nvim-dap"
+  },
+  ["nvim-dap-ui"] = {
+    loaded = true,
+    path = "/home/me/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
+    url = "https://github.com/rcarriga/nvim-dap-ui"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
