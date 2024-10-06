@@ -1,6 +1,8 @@
 require("neotest").setup({
 	adapters = {
-		require('neotest-foundry')
+		require('neotest-foundry')({
+			foundryCommand = 'forge test -vvvv'
+		})
 	}
 })
 
