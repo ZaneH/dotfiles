@@ -9,12 +9,17 @@ return require("packer").startup(function(use)
 	-- Automatically install formatters, linters and daps
 	use({ "WhoIsSethDaniel/mason-tool-installer.nvim", requires = "williamboman/mason-lspconfig.nvim" })
 	use({ "jay-babu/mason-null-ls.nvim", requires = "williamboman/mason-lspconfig.nvim" })
-	use({ "jay-babu/mason-nvim.dap.nvim", requires = "williamboman/mason-lspconfig.nvim" })
+	use({ "jay-babu/mason-nvim-dap.nvim", requires = "williamboman/mason-lspconfig.nvim" })
 	use({ "williamboman/mason-lspconfig.nvim", requires = "williamboman/mason-lspconfig.nvim" })
 
 	-- Cosmetic
 	use({ "folke/tokyonight.nvim" })
 	use({ "typicode/bg.nvim" })
+
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "nvim-tree/nvim-web-devicons", opt = true },
+	})
 
 	use({
 		"debugloop/telescope-undo.nvim",
@@ -64,4 +69,13 @@ return require("packer").startup(function(use)
 	use({ "stevearc/conform.nvim" })
 
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } })
+
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	})
+
+	use({ "folke/trouble.nvim" })
 end)

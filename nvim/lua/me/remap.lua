@@ -2,9 +2,18 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("i", "jk", "<Esc>")
 
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
+-- Jump vim panels with hjkl
+vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
 
-vim.keymap.set('n', '<leader>qq', ':qa<CR>', { desc = 'Quit nvim' })
+-- Show diagnostics
+vim.keymap.set("n", "[d", function()
+	vim.diagnostic.goto_prev()
+end, opts)
+vim.keymap.set("n", "]d", function()
+	vim.diagnostic.goto_next()
+end, opts)
+
+vim.keymap.set("n", "<leader>qq", ":qa<CR>", { desc = "Quit nvim" })
