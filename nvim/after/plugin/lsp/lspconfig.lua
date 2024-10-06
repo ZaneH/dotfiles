@@ -39,6 +39,7 @@ configs.solidity = {
 -- These are just examples. Replace them with the language
 -- servers you have installed in your system
 require("lspconfig").solidity.setup({})
+require("lspconfig").go.setup({})
 
 ---
 -- Autocompletion setup

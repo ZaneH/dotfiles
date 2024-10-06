@@ -78,4 +78,6 @@ return require("packer").startup(function(use)
 	})
 
 	use({ "folke/trouble.nvim" })
+
+	use({ "ray-x/go.nvim" })
 end)
