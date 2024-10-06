@@ -1,21 +1,8 @@
 require("neotest").setup({
 	adapters = {
-		require('neotest-foundry')({
-			foundryCommand = "forge test", -- string | function
-			foundryConfig = nil, -- string | function
-			env = {}, -- table | function
-			cwd = function () return lib.files.match_root_pattern("foundry.toml") end, -- string | function
-			filterDir = function(name)
-				return (
-				name ~= "node_modules"
-				and name ~= "cache"
-				and name ~= "out"
-				and name ~= "artifacts"
-				and name ~= "docs"
-				and name ~= "doc"
-				and name ~= "lib"
-				)
-			end,
-		})
+		require('neotest-foundry')
 	}
 })
+
+vim.keymap.set("n", "<leader>tt", function() require("neotest").run.run(vim.fn.expand("%")) end, { desc = "Test this file" })
+vim.keymap.set("n", "<leader>to", function() require("neotest").output_panel.toggle() end, { desc = "Show test output" })

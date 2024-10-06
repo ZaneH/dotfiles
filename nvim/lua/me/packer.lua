@@ -45,4 +45,10 @@ return require('packer').startup(function(use)
 	use({'ggandor/leap.nvim'})
 
 	use({'folke/noice.nvim', requires = { 'MunifTanjim/nui.nvim' }})
+
+	use({'folke/which-key.nvim'})
+
+	use({'folke/tokyonight.nvim'})
+
+	use({'typicode/bg.nvim'})
 end)

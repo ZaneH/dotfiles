@@ -18,3 +18,5 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+
+vim.keymap.set("n", "<leader>TI", vim.cmd.InspectTree, { desc = "Inspect tree" })
