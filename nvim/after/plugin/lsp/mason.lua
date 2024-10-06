@@ -1,10 +1,11 @@
-require("mason-null-ls").setup({
+require("mason-tool-installer").setup({
 	ensure_installed = {
-		"stylua",
-		"jq",
 		"prettierd",
-		"autopep8",
-		"rustfmt",
+		"stylua",
+		"isort",
+		"black",
+		"pylint",
+		"eslint_d",
 	},
 })
 

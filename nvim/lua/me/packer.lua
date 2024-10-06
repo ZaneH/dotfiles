@@ -6,7 +6,15 @@ return require("packer").startup(function(use)
 
 	use({ "williamboman/mason.nvim" })
 
-	use({ "jay-babu/mason-null-ls.nvim", requires = { "nvimtools/none-ls.nvim" }})
+	-- Automatically install formatters, linters and daps
+	use({ "WhoIsSethDaniel/mason-tool-installer.nvim", requires = "williamboman/mason-lspconfig.nvim" })
+	use({ "jay-babu/mason-null-ls.nvim", requires = "williamboman/mason-lspconfig.nvim" })
+	use({ "jay-babu/mason-nvim.dap.nvim", requires = "williamboman/mason-lspconfig.nvim" })
+	use({ "williamboman/mason-lspconfig.nvim", requires = "williamboman/mason-lspconfig.nvim" })
+
+	-- Cosmetic
+	use({ "folke/tokyonight.nvim" })
+	use({ "typicode/bg.nvim" })
 
 	use({
 		"debugloop/telescope-undo.nvim",
@@ -23,6 +31,7 @@ return require("packer").startup(function(use)
 	use({ "hrsh7th/nvim-cmp" })
 	use({ "hrsh7th/cmp-nvim-lsp" })
 
+	-- Unsure if this is utilized...
 	use({ "sohkai/syntastic-local-solhint" })
 
 	use({
@@ -51,10 +60,6 @@ return require("packer").startup(function(use)
 	use({ "folke/noice.nvim", requires = { "MunifTanjim/nui.nvim" } })
 
 	use({ "folke/which-key.nvim" })
-
-	use({ "folke/tokyonight.nvim" })
-
-	use({ "typicode/bg.nvim" })
 
 	use({ "stevearc/conform.nvim" })
 
