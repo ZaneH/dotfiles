@@ -43,4 +43,6 @@ return require('packer').startup(function(use)
 	use({'mfussenegger/nvim-dap'})
 
 	use({'ggandor/leap.nvim'})
+
+	use({'folke/noice.nvim', requires = { 'MunifTanjim/nui.nvim' }})
 end)
