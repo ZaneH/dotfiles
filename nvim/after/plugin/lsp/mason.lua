@@ -7,6 +7,8 @@ require("mason-tool-installer").setup({
 		"pylint",
 		"eslint_d",
 		"typescript-language-server",
+		"sqls",
+		"gopls",
 	},
 })
 

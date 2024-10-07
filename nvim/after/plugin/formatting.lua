@@ -9,6 +9,7 @@ require("conform").setup({
 		javascript = { "prettierd", "prettier", stop_after_first = true },
 		typescript = { "prettierd", "prettier", stop_after_first = true },
 		go = { "goimports", "gofmt", lsp_format = "fallback" },
+		sql = { "sql_formatter" },
 	},
 	format_on_save = {
 		-- I recommend these options. See :help conform.format for details.

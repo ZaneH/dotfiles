@@ -37,8 +37,14 @@ configs.solidity = {
 }
 
 require("lspconfig").solidity.setup({})
-require("lspconfig").go.setup({})
+require("lspconfig").gopls.setup({})
 require("lspconfig").ts_ls.setup({})
+require("lspconfig").sqls.setup({
+	on_attach = function(client, _)
+		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentRangeFormattingProvider = false
+	end,
+})
 
 ---
 -- Autocompletion setup
