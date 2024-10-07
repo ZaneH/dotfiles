@@ -57,7 +57,8 @@ cmp.setup({
 	},
 	snippet = {
 		expand = function(args)
-			require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+			-- Setup LuaSnip as a source
+			require("luasnip").lsp_expand(args.body)
 		end,
 	},
 	mapping = cmp.mapping.preset.insert({
@@ -70,7 +71,7 @@ cmp.setup({
 	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
-		{ name = "luasnip" }, -- For luasnip users.
+		{ name = "luasnip" },
 	}, {
 		{ name = "buffer" },
 	}),
