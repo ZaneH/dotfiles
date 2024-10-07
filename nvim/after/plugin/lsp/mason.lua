@@ -6,6 +6,7 @@ require("mason-tool-installer").setup({
 		"black",
 		"pylint",
 		"eslint_d",
+		"typescript-language-server",
 	},
 })
 

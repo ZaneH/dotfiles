@@ -1,6 +1,7 @@
 local builtin = require("telescope.builtin")
 
 require("telescope").load_extension("undo")
+require("telescope").load_extension("harpoon")
 
 vim.keymap.set("n", "<leader>pf", builtin.find_files, { desc = "Telescope find files" })
 vim.keymap.set("n", "<leader>pg", builtin.live_grep, { desc = "Telescope live grep" })
