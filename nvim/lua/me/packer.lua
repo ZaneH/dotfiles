@@ -84,4 +84,6 @@ return require("packer").startup(function(use)
 	use({ "ThePrimeagen/harpoon" })
 
 	use({ "folke/zen-mode.nvim" })
+
+	use({ "onsails/lspkind.nvim" })
 end)
