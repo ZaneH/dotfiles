@@ -86,4 +86,6 @@ return require("packer").startup(function(use)
 	use({ "folke/zen-mode.nvim" })
 
 	use({ "onsails/lspkind.nvim" })
+
+	use({ "L3MON4D3/LuaSnip", tag = "v2.*", run = "make install_jsregexp" })
 end)

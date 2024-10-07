@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/me/.local/share/nvim/site/pack/packer/start/FixCursorHold.nvim",
     url = "https://github.com/antoinemadec/FixCursorHold.nvim"
   },
+  LuaSnip = {
+    loaded = true,
+    path = "/home/me/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    url = "https://github.com/L3MON4D3/LuaSnip"
+  },
   ["bg.nvim"] = {
     loaded = true,
     path = "/home/me/.local/share/nvim/site/pack/packer/start/bg.nvim",
