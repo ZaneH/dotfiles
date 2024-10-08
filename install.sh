@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO: Make this script good
+
 # RC files
 ln -s $(pwd)/vimrc ~/.vimrc
 ln -s $(pwd)/zshrc ~/.zshrc
