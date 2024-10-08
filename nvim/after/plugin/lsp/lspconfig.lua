@@ -7,7 +7,7 @@ local lsp_attach = function(client, bufnr)
 	local opts = { buffer = bufnr }
 
 	vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-	vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+	vim.keymap.set("n", "gd", "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>", opts)
 	vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
 	vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
 	vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
@@ -39,6 +39,7 @@ configs.solidity = {
 require("lspconfig").solidity.setup({})
 require("lspconfig").gopls.setup({})
 require("lspconfig").ts_ls.setup({})
+require("lspconfig").lua_ls.setup({})
 require("lspconfig").sqls.setup({
 	on_attach = function(client, _)
 		client.server_capabilities.documentFormattingProvider = false

@@ -9,6 +9,7 @@ require("mason-tool-installer").setup({
 		"typescript-language-server",
 		"sqls",
 		"gopls",
+		"lua_ls",
 	},
 })
 
