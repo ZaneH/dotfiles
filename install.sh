@@ -13,3 +13,7 @@ ln -s $(pwd)/neofetch ~/.config
 
 # Setup nvim
 ln -s $(pwd)/nvim ~/.config/nvim
+
+# Scripts
+mkdir -p ~/.local/bin
+ln -s $(pwd)/bin/scripts ~/.local/bin/scripts

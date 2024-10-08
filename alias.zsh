@@ -5,6 +5,7 @@ alias kitty-theme="kitty +kitten themes"
 alias vz="$EDITOR ~/.zshrc"
 alias vl="$EDITOR ~/.local.zsh"
 alias va="$EDITOR ~/.alias.zsh"
+alias vt="$EDITOR ~/.tmux.conf"
 
 # Git shorthand
 alias gcob="git checkout -b"
@@ -23,3 +24,6 @@ alias n="$EDITOR"
 
 # Clipboard
 alias pbcopy="xclip -selection clipboard"
+
+# Scripts
+bindkey -s ^f "tmux-sessionizer.sh\n"
