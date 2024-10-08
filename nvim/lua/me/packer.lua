@@ -95,4 +95,6 @@ return require("packer").startup(function(use)
 		requires = { "rafamadriz/friendly-snippets" },
 	})
 	use({ "saadparwaiz1/cmp_luasnip" })
+
+	use({ "stevearc/oil.nvim" })
 end)

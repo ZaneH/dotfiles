@@ -1,5 +1,7 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", function()
+	vim.cmd([[Oil --float]])
+end, { desc = "Open project view" })
 vim.keymap.set("i", "jk", "<Esc>")
 
 -- Jump vim panels with hjkl
