@@ -17,6 +17,9 @@ alias grom="git rebase --interactive origin/main"
 # Shorthand commands
 alias k="clear"
 alias sz="source ~/.zshrc"
+alias cati="kitty icat"
+alias v="$EDITOR"
+alias n="$EDITOR"
 
 # Clipboard
 alias pbcopy="xclip -selection clipboard"
