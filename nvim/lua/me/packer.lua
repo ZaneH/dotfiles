@@ -97,4 +97,6 @@ return require("packer").startup(function(use)
 	use({ "saadparwaiz1/cmp_luasnip" })
 
 	use({ "stevearc/oil.nvim" })
+
+	use({ "windwp/nvim-autopairs" })
 end)
