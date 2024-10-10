@@ -99,4 +99,6 @@ return require("packer").startup(function(use)
 	use({ "stevearc/oil.nvim" })
 
 	use({ "windwp/nvim-autopairs" })
+
+	use({ "RRethy/vim-illuminate" })
 end)
