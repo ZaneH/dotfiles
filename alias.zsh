@@ -22,8 +22,9 @@ alias cati="kitty icat"
 alias v="$EDITOR ."
 alias n="$EDITOR ."
 
-# Clipboard
+# Utilities
 alias pbcopy="xclip -selection clipboard"
+alias yt3="yt-dlp -f bestaudio -x --audio-format mp3 --audio-quality 0"
 
-# Scripts
+# ZSH keybinds
 bindkey -s ^f "tmux-sessionizer.sh\n"
