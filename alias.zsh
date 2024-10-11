@@ -6,6 +6,7 @@ alias vz="$EDITOR ~/.zshrc"
 alias vl="$EDITOR ~/.local.zsh"
 alias va="$EDITOR ~/.alias.zsh"
 alias vt="$EDITOR ~/.tmux.conf"
+alias vk="$EDITOR ~/.config/kitty/kitty.conf"
 
 # Git shorthand
 alias gcob="git checkout -b"
@@ -24,7 +25,7 @@ alias n="$EDITOR ."
 
 # Utilities
 alias pbcopy="xclip -selection clipboard"
-alias yt3="yt-dlp -f bestaudio -x --audio-format mp3 --audio-quality 0"
+alias yt3="yt-dlp -f bestaudio -x --audio-format mp3 --audio-quality 0 --downloader aria2c --downloader-args '-c -j 3 -x 3 -s 3 -k 1M'"
 
 # ZSH keybinds
 bindkey -s ^f "tmux-sessionizer.sh\n"

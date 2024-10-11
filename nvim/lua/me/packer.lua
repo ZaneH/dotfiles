@@ -15,6 +15,8 @@ return require("packer").startup(function(use)
 	-- Cosmetic
 	use({ "folke/tokyonight.nvim" })
 	use({ "typicode/bg.nvim" })
+	use({ "RRethy/vim-illuminate" })
+	use({ "folke/todo-comments.nvim", requirements = { "nvim-lua/plenary.nvim" } })
 
 	use({
 		"nvim-lualine/lualine.nvim",
@@ -99,6 +101,4 @@ return require("packer").startup(function(use)
 	use({ "stevearc/oil.nvim" })
 
 	use({ "windwp/nvim-autopairs" })
-
-	use({ "RRethy/vim-illuminate" })
 end)
