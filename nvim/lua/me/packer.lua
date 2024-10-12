@@ -17,6 +17,8 @@ return require("packer").startup(function(use)
 	use({ "typicode/bg.nvim" })
 	use({ "RRethy/vim-illuminate" })
 	use({ "folke/todo-comments.nvim", requirements = { "nvim-lua/plenary.nvim" } })
+	use({ "folke/noice.nvim", requires = { "MunifTanjim/nui.nvim" } })
+	use({ "stevearc/dressing.nvim" })
 
 	use({
 		"nvim-lualine/lualine.nvim",
@@ -63,8 +65,6 @@ return require("packer").startup(function(use)
 	use({ "mfussenegger/nvim-dap" })
 
 	use({ "ggandor/leap.nvim" })
-
-	use({ "folke/noice.nvim", requires = { "MunifTanjim/nui.nvim" } })
 
 	use({ "folke/which-key.nvim" })
 
