@@ -36,6 +36,8 @@ configs.solidity = {
 	},
 }
 
+-- You'll find a list of language servers here:
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 require("lspconfig").solidity.setup({})
 require("lspconfig").gopls.setup({})
 require("lspconfig").ts_ls.setup({})
@@ -69,8 +71,9 @@ cmp.setup({
 		-- Ctrl space to open suggestions
 		["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
 		["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-		["<cr>"] = cmp.mapping.confirm({ select = true }),
+		["<C-y>"] = cmp.mapping.confirm({ select = true }),
 		["<C-Space>"] = cmp.mapping.complete(),
+		["<cr>"] = cmp.mapping.confirm({ select = false }),
 	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
