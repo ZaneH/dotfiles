@@ -87,8 +87,6 @@ return require("packer").startup(function(use)
 
 	use({ "folke/zen-mode.nvim" })
 
-	use({ "onsails/lspkind.nvim" })
-
 	-- Snippets
 	use({
 		"L3MON4D3/LuaSnip",
@@ -114,4 +112,6 @@ return require("packer").startup(function(use)
 	use({ "3rd/image.nvim" })
 
 	use({ "smjonas/inc-rename.nvim" })
+
+	use({ "echasnovski/mini.nvim" })
 end)
