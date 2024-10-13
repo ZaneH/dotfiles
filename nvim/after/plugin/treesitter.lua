@@ -13,6 +13,7 @@ require("nvim-treesitter.configs").setup({
 		"typescript",
 		"rust",
 		"go",
+		"http",
 	},
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)

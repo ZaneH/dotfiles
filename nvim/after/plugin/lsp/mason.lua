@@ -10,6 +10,7 @@ require("mason-tool-installer").setup({
 		"sqls",
 		"gopls",
 		"lua_ls",
+		"bashls",
 	},
 })
 

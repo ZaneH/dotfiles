@@ -42,10 +42,12 @@ require("lspconfig").ts_ls.setup({})
 require("lspconfig").lua_ls.setup({})
 require("lspconfig").sqls.setup({
 	on_attach = function(client, _)
+		-- without this, there was white-space issues
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentRangeFormattingProvider = false
 	end,
 })
+require("lspconfig").bashls.setup({})
 
 ---
 -- Autocompletion setup
