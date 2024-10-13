@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 vim.keymap.set("i", "jk", "<Esc>")
 
 -- Save with <Space>w
-vim.keymap.set("n", "<leader>w", ":w<cr>")
+vim.keymap.set("n", "<leader>w", ":w<cr>", { desc = "Write file" })
 
 -- Jump vim panels with hjkl
 vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })

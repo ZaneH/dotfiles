@@ -55,10 +55,12 @@ require("lspconfig").bashls.setup({})
 -- Autocompletion setup
 ---
 local cmp = require("cmp")
+local cmp_action = require("lsp-zero").cmp_action()
 
 cmp.setup({
-	sources = {
-		{ name = "nvim_lsp" },
+	preselect = "item",
+	completion = {
+		completeopt = "menu,menuone,noinsert",
 	},
 	snippet = {
 		expand = function(args)
@@ -73,7 +75,8 @@ cmp.setup({
 		["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
 		["<C-y>"] = cmp.mapping.confirm({ select = true }),
 		["<C-Space>"] = cmp.mapping.complete(),
-		["<cr>"] = cmp.mapping.confirm({ select = false }),
+		["<Tab>"] = cmp_action.luasnip_supertab(),
+		["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
 	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
