@@ -101,4 +101,27 @@ return require("packer").startup(function(use)
 	use({ "stevearc/oil.nvim" })
 
 	use({ "windwp/nvim-autopairs" })
+
+	use({
+		"epwalsh/obsidian.nvim",
+		tag = "*",
+		requires = {
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			require("obsidian").setup({
+				workspaces = {
+					{
+						name = "personal",
+						path = "~/repos/personal/obs-vault",
+					},
+				},
+			})
+		end,
+	})
+
+	use({ "kiyoon/magick.nvim" })
+	use({ "3rd/image.nvim" })
+
+	use({ "smjonas/inc-rename.nvim" })
 end)
