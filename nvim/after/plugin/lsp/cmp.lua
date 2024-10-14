@@ -17,7 +17,7 @@ cmp.setup({
 		end
 	end,
 	completion = {
-		completeopt = "menu,menuone,preview,noinsert",
+		completeopt = "menu,menuone,preview,noinsert,fuzzy",
 	},
 	snippet = {
 		expand = function(args)

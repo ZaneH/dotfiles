@@ -268,3 +268,4 @@ require("obsidian").setup({
 vim.keymap.set("n", "<leader>O", "<nop>", { desc = "obsidian" })
 vim.keymap.set("n", "<leader>Od", "<cmd>:ObsidianDailies<cr>", { desc = "Open Obsidian dailies" })
 vim.keymap.set("n", "<leader>OT", "<cmd>:ObsidianTomorrow<cr>", { desc = "Open Obsidian tomorrow" })
+vim.keymap.set("n", "<leader>Ot", "<cmd>:ObsidianToday<cr>", { desc = "Open Obsidian today" })
