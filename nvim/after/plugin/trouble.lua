@@ -16,6 +16,7 @@ require("trouble").setup({
 	},
 })
 
+vim.keymap.set("n", "<leader>x", "<nop>", { desc = "trouble" })
 vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnostics (Trouble)" })
 vim.keymap.set(
 	"n",

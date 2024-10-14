@@ -33,4 +33,5 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
+vim.keymap.set("n", "<leader>T", "<nop>", { desc = "treesitter" })
 vim.keymap.set("n", "<leader>TI", vim.cmd.InspectTree, { desc = "Inspect tree" })

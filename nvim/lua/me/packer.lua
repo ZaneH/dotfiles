@@ -119,4 +119,6 @@ return require("packer").startup(function(use)
 	use({ "smjonas/inc-rename.nvim" })
 
 	use({ "echasnovski/mini.nvim" })
+
+	use({ "kristijanhusak/vim-dadbod-ui", requires = { "tpope/vim-dadbod", "kristijanhusak/vim-dadbod-completion" } })
 end)
