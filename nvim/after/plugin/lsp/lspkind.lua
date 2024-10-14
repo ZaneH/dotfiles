@@ -1,5 +1,6 @@
 local lspkind = require("lspkind")
-require("cmp").setup({
+local cmp = require("cmp")
+cmp.setup({
 	formatting = {
 		format = lspkind.cmp_format({
 			mode = "symbol", -- show only symbol annotations

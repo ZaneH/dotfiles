@@ -19,11 +19,11 @@ return require("packer").startup(function(use)
 	use({ "folke/todo-comments.nvim", requirements = { "nvim-lua/plenary.nvim" } })
 	use({ "folke/noice.nvim", requires = { "MunifTanjim/nui.nvim" } })
 	use({ "stevearc/dressing.nvim" })
-
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "nvim-tree/nvim-web-devicons", opt = true },
 	})
+	use({ "onsails/lspkind.nvim" })
 
 	use({
 		"debugloop/telescope-undo.nvim",
@@ -35,10 +35,15 @@ return require("packer").startup(function(use)
 		run = ":TSUpdate",
 	})
 
+	-- Completion
 	use({ "VonHeikemen/lsp-zero.nvim", branch = "v4.x" })
 	use({ "neovim/nvim-lspconfig" })
 	use({ "hrsh7th/nvim-cmp" })
+	use({ "hrsh7th/cmp-buffer" })
+	use({ "hrsh7th/cmp-path" })
+	use({ "hrsh7th/cmp-cmdline" })
 	use({ "hrsh7th/cmp-nvim-lsp" })
+	use({ "David-Kunz/cmp-npm", requires = { "nvim-lua/plenary.nvim" } })
 
 	-- Unsure if this is utilized...
 	use({ "sohkai/syntastic-local-solhint" })

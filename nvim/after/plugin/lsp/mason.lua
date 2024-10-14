@@ -11,6 +11,8 @@ require("mason-tool-installer").setup({
 		"gopls",
 		"lua_ls",
 		"bashls",
+		"html",
+		"cssls",
 	},
 })
 
