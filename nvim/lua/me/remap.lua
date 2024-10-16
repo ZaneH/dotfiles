@@ -1,5 +1,9 @@
 vim.g.mapleader = " "
 
+-- Remap : to ; and vice versa
+vim.api.nvim_set_keymap("n", ";", ":", { noremap = true, silent = false })
+vim.api.nvim_set_keymap("n", ":", ";", { noremap = true, silent = false })
+
 -- Use "jk" in insert mode to enter Normal mode
 vim.keymap.set("i", "jk", "<Esc>")
 
