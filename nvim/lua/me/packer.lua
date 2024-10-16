@@ -13,7 +13,8 @@ return require("packer").startup(function(use)
 	use({ "williamboman/mason-lspconfig.nvim", requires = "williamboman/mason-lspconfig.nvim" })
 
 	-- Cosmetic
-	use({ "folke/tokyonight.nvim" })
+	-- use({ "folke/tokyonight.nvim" })
+	use({ "projekt0n/github-nvim-theme" })
 	use({ "typicode/bg.nvim" })
 	use({ "RRethy/vim-illuminate" })
 	use({ "folke/todo-comments.nvim", requirements = { "nvim-lua/plenary.nvim" } })
