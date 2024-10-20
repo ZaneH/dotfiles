@@ -41,6 +41,7 @@ require("lspconfig").solidity.setup({})
 require("lspconfig").gopls.setup({})
 require("lspconfig").ts_ls.setup({})
 require("lspconfig").lua_ls.setup({})
+require("lspconfig").cssls.setup({})
 require("lspconfig").sqls.setup({
 	on_attach = function(client, _)
 		-- without this, there was white-space issues
