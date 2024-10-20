@@ -4,6 +4,10 @@ require("obsidian").setup({
 			name = "work",
 			path = "~/repos/vaults/work",
 		},
+		{
+			name = "personal",
+			path = "~/repos/vaults/personal",
+		},
 	},
 
 	daily_notes = {
