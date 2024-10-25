@@ -13,6 +13,7 @@ require("mason-tool-installer").setup({
 		"bashls",
 		"html",
 		"cssls",
+		"ocaml-lsp",
 	},
 })
 

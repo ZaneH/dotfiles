@@ -50,3 +50,4 @@ require("lspconfig").sqls.setup({
 	end,
 })
 require("lspconfig").bashls.setup({})
+require("lspconfig").ocamllsp.setup({})
