@@ -610,11 +610,18 @@ before packages are loaded."
   (setq org-agenda-files '("~/repos/org"))
   (setq org-capture-templates
         '(("w" "Work Task" entry (file+headline "~/repos/org/tasks.org" "Work")
-           "* TODO %?\n  %i\n  %a")
+           "* TODO %?\n  %i\n")
+          ("y" "YouTube Idea" entry (file+headline "~/repos/org/tasks.org" "Index")
+           "* TODO %?\n  %i\n")
+
           ("s" "School Task" entry (file+headline "~/repos/org/tasks.org" "School")
-           "* TODO %?\n  %i\n  %a")
+           "* TODO %?\n  %i\n")
           ("p" "Personal Task" entry (file+headline "~/repos/org/tasks.org" "Personal")
-           "* TODO %?\n  %i\n  %a")))
+           "* TODO %?\n  %i\n")
+
+          ("W" "Work Task w/ Note" entry (file+headline "~/repos/org/tasks.org" "Work")
+           "* TODO %?\n  %i\n")
+          ))
 
   ;; Enable agenda notifications
   (setq-default dotspacemacs-configuration-layers
