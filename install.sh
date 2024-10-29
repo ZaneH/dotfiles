@@ -19,6 +19,9 @@ ln -s $(pwd)/neofetch ~/.config
 # Setup nvim
 ln -s $(pwd)/nvim ~/.config/nvim
 
+# Setup emacs
+ln -s $(pwd)/spacemacs ~/.spacemacs
+
 # Scripts
 mkdir -p ~/.local/bin
 ln -s $(pwd)/bin/scripts ~/.local/bin/scripts
