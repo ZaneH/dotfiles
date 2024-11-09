@@ -32,13 +32,13 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(html
+   '(python
+     html
      yaml
      docker
      typescript
      javascript
      json
-     ;; Run `opam user-setup install` to finish ocaml setup
      ocaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -57,11 +57,12 @@ This function should only modify configuration layer settings."
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
-     ;; spell-checking
+     spell-checking
      syntax-checking
      version-control
      treemacs
      toml
+     solidity
      )
 
    ;; List of additional packages that will be installed without being wrapped
@@ -76,6 +77,9 @@ This function should only modify configuration layer settings."
                                       doom-themes
                                       flycheck
                                       move-mode
+                                      org-alert
+                                      add-node-modules-path
+                                      exec-path-from-shell
                                       )
 
    ;; A list of packages that cannot be updated.
@@ -574,6 +578,7 @@ default it calls `spacemacs/load-spacemacs-env' which loads the environment
 variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
 See the header of this file for more information."
   (spacemacs/load-spacemacs-env)
+  (exec-path-from-shell-initialize)
   )
 
 (defun dotspacemacs/user-init ()
@@ -601,35 +606,52 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (customize-set-variable 'move-bin "sui move")
 
-  ;; Configure Docker LSP
+  (setq css-enable-lsp t)
+  (setq less-enable-lsp t)
+  (setq scss-enable-lsp t)
+  (setq html-enable-lsp t)
+
   (setq-default dotspacemacs-configuration-layers
-                '((docker :variables docker-dockerfile-backend 'lsp)))
+                '(
+                  (docker :variables docker-dockerfile-backend 'lsp)
+                  ;; Enable notifications for org-mode
+                  (org :variables
+                       org-enable-notifications t
+                       org-start-notification-daemon-on-startup t)
+                  (solidity :variables solidity-flycheck-solium-checker-active t)
+                  (typescript :variables
+                              typescript-fmt-on-save t
+                              typescript-fmt-tool 'tide
+                              typescript-linter 'eslint)
+                  ))
+
+  ;; Configure org-mode notifications
+  (setq alert-default-style 'libnotify)
+  (setq org-alert-interval 300
+        org-alert-notify-cutoff 15
+        org-alert-notify-after-event-cutoff 15)
+  (org-alert-enable)
+
+  ;; Don't prompt for confirmation on SPC f D
+  (setq spacemacs-keep-legacy-current-buffer-delete-bindings nil)
 
   ;; #BEGIN_ORG-MODE
   ;; Specify org agenda directory
   (setq org-agenda-files '("~/repos/org"))
   (setq org-capture-templates
-        '(("w" "Work Task" entry (file+headline "~/repos/org/tasks.org" "Work")
+        '(("w" "Work Task" entry (file "~/repos/org/work.org")
            "* TODO %?\n  %i\n")
-          ("y" "YouTube Idea" entry (file+headline "~/repos/org/tasks.org" "Index")
-           "* TODO %?\n  %i\n")
-
-          ("s" "School Task" entry (file+headline "~/repos/org/tasks.org" "School")
-           "* TODO %?\n  %i\n")
-          ("p" "Personal Task" entry (file+headline "~/repos/org/tasks.org" "Personal")
+          ("y" "YouTube Idea" entry (file "~/repos/org/youtube.org")
            "* TODO %?\n  %i\n")
 
-          ("W" "Work Task w/ Note" entry (file+headline "~/repos/org/tasks.org" "Work")
+          ("s" "School Task" entry (file "~/repos/org/school.org")
+           "* TODO %?\n  %i\n")
+          ("p" "Personal Task" entry (file "~/repos/org/personal.org")
+           "* TODO %?\n  %i\n")
+
+          ("W" "Work Task w/ Note" entry (file "~/repos/org/work.org")
            "* TODO %?\n  %i\n")
           ))
-
-  ;; Enable agenda notifications
-  (setq-default dotspacemacs-configuration-layers
-                '(
-                  (org :variables
-                       org-enable-notifications t
-                       org-start-notification-daemon-on-startup t)))
-  (setq alert-default-style 'notifications)
 
   ;; Add colors for org keywords
   (setq org-todo-keyword-faces
@@ -658,20 +680,22 @@ before packages are loaded."
                         (org-deadline-warning-days 7)))))
           ))
 
-  ;; Weekly review
-  (setq org-log-done 'time)
-  (setq org-agenda-start-with-log-mode t)
+  (setq org-tag-alist
+        '(
+          ;; Focus
+          ("@school" . ?s)
+          ("@work" . ?w)
+          ("@youtube" . ?y)
+          ("@dodo" . ?d)
+          ("@freetime" . ?f)
 
-  (setq org-agenda-custom-commands
-        '(("w" "Weekly Review"
-           ((agenda ""
-                    ((org-agenda-overriding-header "Completed Tasks")
-                     (org-agenda-skip-function '(org-agenda-skip-entry-if 'nottodo 'done))
-                     (org-agenda-span 'week))))
-           ((agenda ""
-                    ((org-agenda-overriding-header "Unfinished Scheduled Tasks")
-                     (org-agenda-skip-function '(org-function-skip-entry-if 'todo 'done))
-                     (org-agenda span 'week)))))))
+          ;; Activities
+          ("@planning" . ?P)
+          ("@programming" . ?p)
+          ("@writing" . ?W)
+          ("@study" . ?S)
+          ("@homework" . ?h)
+          ))
   ;; #END_ORG-MODE
   )
 
@@ -688,7 +712,7 @@ This function is called at the very end of Spacemacs initialization."
    ;; Your init file should contain only one such instance.
    ;; If there is more than one, they won't work right.
    '(package-selected-packages
-     '(doom-modeline shrink-path nerd-icons json-navigator company-web web-completion-data counsel-css helm-css-scss pug-mode sass-mode haml-mode scss-mode slim-mode tagedit yaml-mode docker tablist aio dockerfile-mode web-beautify emmet-mode typescript-mode web-mode add-node-modules-path dap-mode lsp-docker bui impatient-mode import-js grizzl js-doc js2-refactor multiple-cursors livid-mode nodejs-repl npm-mode prettier-js skewer-mode js2-mode simple-httpd tern gh-md markdown-toc move-mode browse-at-remote diff-hl string-inflection toml-mode solidity-flycheck solidity-mode spinner code-review emojify deferred a flycheck-pos-tip pos-tip git-link git-messenger git-modes git-timemachine gitignore-templates helm-git-grep helm-ls-git helm-lsp lsp-origami origami lsp-treemacs lsp-ui lsp-mode orgit-forge orgit forge yaml markdown-mode ghub closql emacsql treepy smeargle treemacs-magit magit with-editor transient magit-section alert log4e gntp org-project-capture org-category-capture doom-themes auto-yasnippet helm-c-yasnippet helm-company yasnippet-snippets yasnippet counsel-gtags counsel swiper ivy dune flycheck-ocaml ggtags merlin-company company merlin-eldoc merlin-iedit merlin ocamlformat ocp-indent utop tuareg caml ws-butler writeroom-mode winum which-key vundo volatile-highlights vim-powerline vi-tilde-fringe uuidgen undo-fu-session undo-fu treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org term-cursor symon symbol-overlay string-edit-at-point spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline space-doc restart-emacs request rainbow-delimiters quickrun popwin pcre2el password-generator paradox overseer org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file nameless multi-line macrostep lorem-ipsum link-hint inspector info+ indent-guide hybrid-mode hungry-delete htmlize holy-mode hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-descbinds helm-comint helm-ag google-translate golden-ratio gnuplot flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav elisp-demos elisp-def editorconfig dumb-jump drag-stuff dotenv-mode disable-mouse dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile all-the-icons aggressive-indent ace-link ace-jump-helm-line)))
+     '(exec-path-from-shell blacken code-cells company-anaconda anaconda-mode cython-mode helm-cscope helm-pydoc importmagic epc ctable concurrent live-py-mode lsp-pyright nose pip-requirements pipenv load-env-vars pippel poetry py-isort pydoc pyenv-mode pythonic pylookup pytest pyvenv sphinx-doc xcscope yapfify auto-dictionary flyspell-correct-helm flyspell-correct org-alert doom-modeline shrink-path nerd-icons json-navigator company-web web-completion-data counsel-css helm-css-scss pug-mode sass-mode haml-mode scss-mode slim-mode tagedit yaml-mode docker tablist aio dockerfile-mode web-beautify emmet-mode typescript-mode web-mode add-node-modules-path dap-mode lsp-docker bui impatient-mode import-js grizzl js-doc js2-refactor multiple-cursors livid-mode nodejs-repl npm-mode skewer-mode js2-mode simple-httpd tern gh-md markdown-toc move-mode browse-at-remote diff-hl string-inflection toml-mode solidity-flycheck solidity-mode spinner code-review emojify deferred a flycheck-pos-tip pos-tip git-link git-messenger git-modes git-timemachine gitignore-templates helm-git-grep helm-ls-git helm-lsp lsp-origami origami lsp-treemacs lsp-ui lsp-mode orgit-forge orgit forge yaml markdown-mode ghub treepy smeargle treemacs-magit magit with-editor transient magit-section alert log4e gntp org-project-capture org-category-capture doom-themes auto-yasnippet helm-c-yasnippet helm-company yasnippet-snippets yasnippet counsel-gtags counsel swiper ivy dune flycheck-ocaml ggtags merlin-company company merlin-eldoc merlin-iedit merlin ocamlformat ocp-indent utop tuareg caml ws-butler writeroom-mode winum which-key vundo volatile-highlights vim-powerline vi-tilde-fringe uuidgen undo-fu-session undo-fu treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org term-cursor symon symbol-overlay string-edit-at-point spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline space-doc restart-emacs request rainbow-delimiters quickrun popwin pcre2el password-generator paradox overseer org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file nameless multi-line macrostep lorem-ipsum link-hint inspector info+ indent-guide hybrid-mode hungry-delete htmlize holy-mode hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-descbinds helm-comint helm-ag google-translate golden-ratio gnuplot flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav elisp-demos elisp-def editorconfig dumb-jump drag-stuff dotenv-mode disable-mouse dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile all-the-icons aggressive-indent ace-link ace-jump-helm-line)))
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
    ;; If you edit it by hand, you could mess it up, so be careful.
