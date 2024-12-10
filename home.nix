@@ -37,7 +37,7 @@
     tree
     bat
     docker
-    oh-my-zsh
+    yt-dlp
 
     # gui
     vlc
@@ -111,8 +111,12 @@
   programs.zsh = {
     enable = true;
     initExtra = ''
+    export ZSH="$HOME/.oh-my-zsh"
+    ZSH_THEME="agnoster"
+
     source $HOME/.local.zsh
     source $HOME/.alias.zsh
+    source $ZSH/oh-my-zsh.sh
     '';
     plugins = [
       {
@@ -125,11 +129,6 @@
         };
       }
     ];
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" ];
-      theme = "agnoster";
-    };
   };
   programs.zoxide = {
     enable = true;
