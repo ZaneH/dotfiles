@@ -21,7 +21,6 @@
     # system
     wine
     nerd-fonts.jetbrains-mono
-    gnomeExtensions.clipboard-indicator
     emote
 
     # cli
@@ -80,6 +79,7 @@
     ignores = [
       "*~"
       "*.swp"
+      ".DS_Store"
     ];
     extraConfig = {
       init.defaultBranch = "main";
