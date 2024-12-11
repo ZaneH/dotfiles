@@ -14,15 +14,12 @@ This repository contains my dotfiles, managed with [Nix](https://nixos.org/) and
    home-manager init --switch $HOME/.dotfiles
    ```
 
-## Customization
-
-The configuration uses Nix and Home Manager to handle packages, environment variables, and dotfiles. You can easily adjust it to fit your needs.
-
 ### Useful Resources
 
 - **Find Packages**:
   - [MyNixOS](https://mynixos.com/packages): User-friendly search engine for Nix packages and configuration options.
   - [NixOS Packages Search](https://search.nixos.org/packages): Official search for all available packages.
+- **[\[YT\] How to use Nix on Ubuntu or any Linux Distro](https://www.youtube.com/watch?v=5Dd7rQPNDT8&t=485s)**: Timestamped video on Nix and Home Manager.
   
 ## Notes
 
