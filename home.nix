@@ -19,7 +19,6 @@
   # environment.
   home.packages = with pkgs; [
     # system
-    wine
     nerd-fonts.jetbrains-mono
     emote
 
@@ -38,6 +37,7 @@
     bat
     docker
     yt-dlp
+    ffmpeg
 
     # gui
     vlc
