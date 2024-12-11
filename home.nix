@@ -47,6 +47,7 @@
     transmission_4-qt
     vorta
     vscodium
+    pavucontrol
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
