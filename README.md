@@ -6,7 +6,7 @@ This repository contains my dotfiles, managed with [Nix](https://nixos.org/) and
 
 1. Clone the repository to `~/.dotfiles`:
    ```bash
-   git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles
+   git clone https://github.com/ZaneH/dotfiles.git ~/.dotfiles
    ```
 
 2. Initialize and activate the configuration:
