@@ -32,11 +32,14 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(python
+   '(react
+     sql
+     python
      html
      yaml
      docker
      typescript
+     tide
      javascript
      json
      ocaml
@@ -80,6 +83,7 @@ This function should only modify configuration layer settings."
                                       org-alert
                                       add-node-modules-path
                                       exec-path-from-shell
+                                      prettier
                                       )
 
    ;; A list of packages that cannot be updated.
@@ -611,8 +615,18 @@ before packages are loaded."
   (setq scss-enable-lsp t)
   (setq html-enable-lsp t)
 
+  ;; Tabs vs Spaces: https://www.youtube.com/watch?v=cowtgmZuai0
+  (setq-default tab-width 2)
+  (setq-default indent-tabs-mode nil)
+  (setq-default c-basic-offset 4)
+  (setq-default typescript-indent-level 2)
+  (setq-default typescript-auto-indent-flag t)
+
+  (add-hook 'typescript-mode-hook #'prettier-js-mode)
+
   (setq-default dotspacemacs-configuration-layers
                 '(
+                  html
                   (docker :variables docker-dockerfile-backend 'lsp)
                   ;; Enable notifications for org-mode
                   (org :variables
@@ -621,11 +635,16 @@ before packages are loaded."
                   (solidity :variables solidity-flycheck-solium-checker-active t)
                   (typescript :variables
                               typescript-fmt-on-save t
-                              typescript-fmt-tool 'tide
+                              typescript-fmt-tool 'prettier
+                              typescript-backend 'tide
                               typescript-linter 'eslint)
+                  (sql :variables
+                       sql-backend 'lsp
+                       sql-lsp-sqls-workspace-config-path 'workspace)
                   ))
 
   ;; Configure org-mode notifications
+  ;; add (require 'org-alert) to init.el
   (setq alert-default-style 'libnotify)
   (setq org-alert-interval 300
         org-alert-notify-cutoff 15
@@ -634,6 +653,8 @@ before packages are loaded."
 
   ;; Don't prompt for confirmation on SPC f D
   (setq spacemacs-keep-legacy-current-buffer-delete-bindings nil)
+  ;; Ignore file name spelling in LSP headerline
+  (setq lsp-headerline-breadcrumb-enable-diagnostics nil)
 
   ;; #BEGIN_ORG-MODE
   ;; Specify org agenda directory
@@ -670,7 +691,7 @@ before packages are loaded."
           ("TEMP" . "#b1951d")
           ("FIXME" . "#dc752f")
           ))
-  ;; Set sequence of org todo keywords (shift <- -> cycle)
+  ;; Set sequence of org todo keywords
   (setq org-todo-keywords '((sequence "TODO" "PROGRESS" "BLOCKED" "|" "DONE" "DELEGATED" "CANCELLED")))
 
   ;; Daily agenda
@@ -712,7 +733,7 @@ This function is called at the very end of Spacemacs initialization."
    ;; Your init file should contain only one such instance.
    ;; If there is more than one, they won't work right.
    '(package-selected-packages
-     '(exec-path-from-shell blacken code-cells company-anaconda anaconda-mode cython-mode helm-cscope helm-pydoc importmagic epc ctable concurrent live-py-mode lsp-pyright nose pip-requirements pipenv load-env-vars pippel poetry py-isort pydoc pyenv-mode pythonic pylookup pytest pyvenv sphinx-doc xcscope yapfify auto-dictionary flyspell-correct-helm flyspell-correct org-alert doom-modeline shrink-path nerd-icons json-navigator company-web web-completion-data counsel-css helm-css-scss pug-mode sass-mode haml-mode scss-mode slim-mode tagedit yaml-mode docker tablist aio dockerfile-mode web-beautify emmet-mode typescript-mode web-mode add-node-modules-path dap-mode lsp-docker bui impatient-mode import-js grizzl js-doc js2-refactor multiple-cursors livid-mode nodejs-repl npm-mode skewer-mode js2-mode simple-httpd tern gh-md markdown-toc move-mode browse-at-remote diff-hl string-inflection toml-mode solidity-flycheck solidity-mode spinner code-review emojify deferred a flycheck-pos-tip pos-tip git-link git-messenger git-modes git-timemachine gitignore-templates helm-git-grep helm-ls-git helm-lsp lsp-origami origami lsp-treemacs lsp-ui lsp-mode orgit-forge orgit forge yaml markdown-mode ghub treepy smeargle treemacs-magit magit with-editor transient magit-section alert log4e gntp org-project-capture org-category-capture doom-themes auto-yasnippet helm-c-yasnippet helm-company yasnippet-snippets yasnippet counsel-gtags counsel swiper ivy dune flycheck-ocaml ggtags merlin-company company merlin-eldoc merlin-iedit merlin ocamlformat ocp-indent utop tuareg caml ws-butler writeroom-mode winum which-key vundo volatile-highlights vim-powerline vi-tilde-fringe uuidgen undo-fu-session undo-fu treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org term-cursor symon symbol-overlay string-edit-at-point spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline space-doc restart-emacs request rainbow-delimiters quickrun popwin pcre2el password-generator paradox overseer org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file nameless multi-line macrostep lorem-ipsum link-hint inspector info+ indent-guide hybrid-mode hungry-delete htmlize holy-mode hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-descbinds helm-comint helm-ag google-translate golden-ratio gnuplot flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav elisp-demos elisp-def editorconfig dumb-jump drag-stuff dotenv-mode disable-mouse dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile all-the-icons aggressive-indent ace-link ace-jump-helm-line)))
+     '(rjsx-mode sql-indent sqlup-mode prettier nvm iter2 tide exec-path-from-shell blacken code-cells company-anaconda anaconda-mode cython-mode helm-cscope helm-pydoc importmagic epc ctable concurrent live-py-mode lsp-pyright nose pip-requirements pipenv load-env-vars pippel poetry py-isort pydoc pyenv-mode pythonic pylookup pytest pyvenv sphinx-doc xcscope yapfify auto-dictionary flyspell-correct-helm flyspell-correct org-alert doom-modeline shrink-path nerd-icons json-navigator company-web web-completion-data counsel-css helm-css-scss pug-mode sass-mode haml-mode scss-mode slim-mode tagedit yaml-mode docker tablist aio dockerfile-mode web-beautify emmet-mode typescript-mode web-mode add-node-modules-path dap-mode lsp-docker bui impatient-mode import-js grizzl js-doc js2-refactor multiple-cursors livid-mode nodejs-repl npm-mode skewer-mode js2-mode simple-httpd tern gh-md markdown-toc move-mode browse-at-remote diff-hl string-inflection toml-mode solidity-flycheck solidity-mode spinner code-review emojify deferred a flycheck-pos-tip pos-tip git-link git-messenger git-modes git-timemachine gitignore-templates helm-git-grep helm-ls-git helm-lsp lsp-origami origami lsp-treemacs lsp-ui lsp-mode orgit-forge orgit forge yaml markdown-mode ghub treepy smeargle treemacs-magit magit with-editor transient magit-section alert log4e gntp org-project-capture org-category-capture doom-themes auto-yasnippet helm-c-yasnippet helm-company yasnippet-snippets yasnippet counsel-gtags counsel swiper ivy dune flycheck-ocaml ggtags merlin-company company merlin-eldoc merlin-iedit merlin ocamlformat ocp-indent utop tuareg caml ws-butler writeroom-mode winum which-key vundo volatile-highlights vim-powerline vi-tilde-fringe uuidgen undo-fu-session undo-fu treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org term-cursor symon symbol-overlay string-edit-at-point spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline space-doc restart-emacs request rainbow-delimiters quickrun popwin pcre2el password-generator paradox overseer org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file nameless multi-line macrostep lorem-ipsum link-hint inspector info+ indent-guide hybrid-mode hungry-delete htmlize holy-mode hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-descbinds helm-comint helm-ag google-translate golden-ratio gnuplot flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav elisp-demos elisp-def editorconfig dumb-jump drag-stuff dotenv-mode disable-mouse dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile all-the-icons aggressive-indent ace-link ace-jump-helm-line)))
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
    ;; If you edit it by hand, you could mess it up, so be careful.

@@ -5,6 +5,7 @@
   # manage.
   home.username = "me";
   home.homeDirectory = "/home/me";
+  nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -26,7 +27,6 @@
     neovim
     zoxide
     ripgrep
-    tmux
     htop
     atop
     btop
@@ -35,18 +35,22 @@
     xclip
     tree
     bat
-    docker
     yt-dlp
     ffmpeg
+    direnv
+    cmus
+    cava
+    pnpm
 
     # gui
     vlc
     element-desktop
     rnote
-    calibre
     transmission_4-qt
     vorta
-    vscodium
+    vscode
+    beekeeper-studio
+    dbeaver-bin
     pavucontrol
   ];
 
@@ -70,42 +74,53 @@
   };
   home.shellAliases = {
     pbcopy = "xclip -selection clipboard";
+    vh = "$EDITOR $HOME/.dotfiles/home.nix";
+    c = "$HOME/.nix-profile/bin/codium";
+    k = "clear";
+    ec = "emacsclient -c";
+    R1 = "RUST_BACKTRACE=1";
+    R0 = "RUST_BACKTRACE=0";
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  programs.git = {
-    enable = true;
-    lfs.enable = true;
-    ignores = [
-      "*~"
-      "*.swp"
-      ".DS_Store"
-    ];
-    extraConfig = {
-      init.defaultBranch = "main";
-    };
-    includes = [
-      {
-        path = "~/.gitconfig-personal";
-        condition = "gitdir:~/repos/personal/";
-      }
-      {
-        path = "~/.gitconfig-work";
-        condition = "gitdir:~/repos/work/";
-      }
-    ];
-  };
+  # programs.git = {
+  #   enable = true;
+  #   lfs.enable = true;
+  #   ignores = [
+  #     "*~"
+  #     "*.swp"
+  #     ".DS_Store"
+  #   ];
+  #   extraConfig = {
+  #     user.useConfigOnly = true;
+  #     init.defaultBranch = "main";
+  #   };
+  #   includes = [
+  #     {
+  #       condition = "gitdir:~/repos/personal/";
+  #       path = "~/.gitconfig-personal";
+  #     }
+  #     {
+  #       condition = "gitdir:~/repos/work/";
+  #       path = "~/.gitconfig-work";
+  #     }
+  #   ];
+  # };
   programs.ssh = {
     enable = true;
     matchBlocks = {
-      "personal" = {
+      "github.com-personal" = {
         hostname = "github.com";
+        user = "git";
         identityFile = "~/.ssh/id_rsa_personal";
+        identitiesOnly = true;
       };
-      "work" = {
+      "github.com-work" = {
         hostname = "github.com";
+        user = "git";
         identityFile = "~/.ssh/id_rsa_work";
+        identitiesOnly = true;
       };
     };
   };
@@ -114,6 +129,8 @@
     initExtra = ''
     export ZSH="$HOME/.oh-my-zsh"
     ZSH_THEME="agnoster"
+
+    plugins=($plugins git)
 
     source $HOME/.local.zsh
     source $HOME/.alias.zsh
@@ -130,6 +147,12 @@
         };
       }
     ];
+  };
+  programs.tmux = {
+    enable = true;
+    extraConfig = ''
+    set -g mouse on
+    '';
   };
   programs.zoxide = {
     enable = true;
