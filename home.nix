@@ -41,15 +41,13 @@
     cmus
     cava
     pnpm
+    act
 
     # gui
     vlc
-    element-desktop
-    rnote
     transmission_4-qt
     vorta
     vscode
-    beekeeper-studio
     dbeaver-bin
     pavucontrol
   ];
